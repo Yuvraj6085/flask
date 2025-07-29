@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Bookings</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h2>All Bookings</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Service</th>
+                <th>Event Date</th>
+                <th>Special Requests</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.name }}</td>
+                <td>{{ booking.email }}</td>
+                <td>{{ booking.phone }}</td>
+                <td>{{ booking.service_type }}</td>
+                <td>{{ booking.event_date or 'N/A' }}</td>
+                <td>{{ booking.special_requests or 'None' }}</td>
+                <td>{{ booking.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
